@@ -1,7 +1,7 @@
 {
   "name": "currency-keeper",
   "version": "1.0.0",
-  "description": "",
+  "description": "A Node.js project that uses Express to serve a website with two functionalities: check currency rate at a given date and graph the change in a rate over a given period.",
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
