@@ -1,0 +1,35 @@
+<% include partials/header-graph.ejs %>
+
+<div id="graph"></div>
+
+<p id="errorQuery" hidden=none> Your original query may have been cut at max limit <%=queryNum %> </p>
+
+  <div id='button'>
+    <a href='/'><button class='back_button'>Go back to main page</button></a>
+  </div>
+
+<script>
+  x = [<%= x %>];
+  console.log(x);
+  var i = 0;
+  x.forEach(function(index){
+    var date = new Date();
+    date.setTime(index)
+    console.log(date);
+    x[i] = date;
+    i++;
+  });
+  
+	Plotly.plot( 'graph', [{ x: x,
+                           y: [<%= y %>],
+                           type: 'scatter'
+                           }]
+                       , { margin: { t: 0 } },
+                );
+                
+  if (<%=queryNum%> == 110){
+  document.getElementById("errorQuery").toggleAttribute('hidden');
+  }
+</script>
+
+<% include partials/footer.ejs %>

@@ -1,0 +1,55 @@
+<% include partials/header.ejs %>
+<div class='container'>
+
+  <span class='inline_container'>
+    <form id='ask' action='/ask' method='GET'>
+      <ul><span id='addmorelines'>
+        <li class='header'>Rate at a given time</li>
+
+        <li><input class='currency_pair' id="bottom-border" type='text' name='base' autocomplete=off placeholder='base' required></li>
+        <li><input class='currency_pair' type='text' name='rate' placeholder='rate' autocomplete=off required></li>
+
+        </span>
+        <li><input type='date' class='date' name='date' min="2000-01-01"></li>
+      </ul>
+    </form>
+    <div id='button'>
+      <button form='ask' type='submit' class='submit'>Search!</button>
+      <button id='add_more'>Add more</button>
+    </div>
+  </span>
+  <span class='inline_container'>
+    <form action='/graph' method='GET'>
+      <ul>
+        <li class='header'>Graph over a period</li>
+        <li><input class='currency_pair' id="bottom-border" type='text' name='base' autocomplete=off placeholder='base' required></li>
+        <li><input class='currency_pair' type='text' name='rate' placeholder='rate' autocomplete=off required></li>		
+
+        <li><input type='date' class='date' name='startDate' min="2000-01-01" required> - <input type='date' class='date' name='endDate'  min="2000-01-01" required></li>
+        <li id='dropdown'><select name="timeInterval">
+          <option value="86400000" selected>Daily</option>
+          <option value="604800000">Weekly</option>
+          <option value="2629743000">Monthly</option>
+        </select></li>
+      </ul>
+      <div id='button'>
+        <button type='submit' class='submit'>Search!</button>
+      </div>
+    </form>
+  </span>
+  
+</div>
+
+<script> 
+	var i = 0;
+  document.querySelector('#add_more').addEventListener("click", function(){
+    if(i < 2){
+    var litem = document.createElement("LI");
+    litem.innerHTML = "<input class='currency_pair' type='text' name='rate' placeholder='rate'>";
+    document.querySelector('#addmorelines').appendChild(litem);
+  };
+    i++;
+  });
+</script>
+
+<% include partials/footer.ejs %>

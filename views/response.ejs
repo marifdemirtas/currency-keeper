@@ -1,0 +1,14 @@
+<% include partials/header.ejs %>
+
+<div class='container'>
+    <ul>
+        <% for(i=0; i < len; i++){%>
+            <li class='results'>The currency <span id='currency_pair'><%= base %>/<%= rate[i]%></span> on <strong><%= date%></strong> is: <span id='currency_result'><%= currencyData['rates'][rate[i]].toFixed(4)%>.</span></li>
+            <% }%>
+    </ul>
+    <div id='button'>
+        <a href='/'><button class='back_button'>Go back to main page</button></a>
+    </div>
+</div>
+
+<% include partials/footer.ejs %>
